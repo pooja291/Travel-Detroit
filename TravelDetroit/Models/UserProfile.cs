@@ -6,13 +6,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TravelDetroit.Models
 {
-    public class User
+    public class UserProfile
     {
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
-        public string Password { get; set; }
+        public ApplicationUser User { get; set; }
         public Dictionary<int, string> FavoriteLocations { get; set; }
     }
 }
