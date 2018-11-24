@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "AddLocationToUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (@Html.BeginForm("SaveLocationToUser", "Users"))
+{
+    <h2>Add Your Favorite Location</h2>
+
+    <div>
+        Please provide the location name:<br>
+        <input type="text" id="locationName" name="locationName">
+        <input id="searchLocation" type="button" value="Search Location" onclick="GetLocation(); return false;" />
+    </div>
+    <br />
+    <div>
+        Here are the search results-
+        <br />
+        Name of the Place: <label id="lblName"></label>
+        <br />
+        Address: <label id="lblAddress"></label>
+        <br />
+        Tags: <label id="lbltags"></label>
+    </div>
+    <br />
+    <button type="Submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    <script>
+        function GetLocation() {
+            $.ajax({
+
+                url: '/users/PlaceSearch',
+                type: 'GET',
+                data: {
+                    'searchText': $("#locationName").val()
+                },
+                dataType: 'json',
+                success: function (data) {
+                    $('#lblName').text(data.candidates[0].name);
+                    $('#lblAddress').text(data.candidates[0].formatted_address);
+                    $('#lbltags').text(data.candidates[0].types);
+                },
+                error: function (request, error) {
+                    alert("Request: " + JSON.stringify(request));
+                }
+            });
+        }
+    </script>
+}
