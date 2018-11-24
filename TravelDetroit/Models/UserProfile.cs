@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 
 namespace TravelDetroit.Models
 {
@@ -10,7 +6,8 @@ namespace TravelDetroit.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         public ApplicationUser User { get; set; }
-        public Dictionary<int, string> FavoriteLocations { get; set; }
+        public ICollection<Location> Locations { get; set; }
     }
 }

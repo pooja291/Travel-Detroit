@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TravelDetroit.Models
@@ -12,7 +9,8 @@ namespace TravelDetroit.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Url { get; set; }
-        public Dictionary<int, string> FavoritedBy { get; set; }
+        public string PlaceId { get; set; }
+        public string Address { get; set; }
+        public ICollection<UserProfile> UserProfiles { get; set; }
     }
 }
