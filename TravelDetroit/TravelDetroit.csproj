@@ -228,6 +228,26 @@
     <Compile Include="Migrations\201811240057128_AddNameToUserProfile.Designer.cs">
       <DependentUpon>201811240057128_AddNameToUserProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811241740252_added userfavoritelocation table.cs" />
+    <Compile Include="Migrations\201811241740252_added userfavoritelocation table.Designer.cs">
+      <DependentUpon>201811241740252_added userfavoritelocation table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811241741510_UserFavoriteLocations.cs" />
+    <Compile Include="Migrations\201811241741510_UserFavoriteLocations.Designer.cs">
+      <DependentUpon>201811241741510_UserFavoriteLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811241743435_UserFavoriteLocations1.cs" />
+    <Compile Include="Migrations\201811241743435_UserFavoriteLocations1.Designer.cs">
+      <DependentUpon>201811241743435_UserFavoriteLocations1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811241744047_UserFavoriteLocations2.cs" />
+    <Compile Include="Migrations\201811241744047_UserFavoriteLocations2.Designer.cs">
+      <DependentUpon>201811241744047_UserFavoriteLocations2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811241750459_UserFavoriteLocations3.cs" />
+    <Compile Include="Migrations\201811241750459_UserFavoriteLocations3.Designer.cs">
+      <DependentUpon>201811241750459_UserFavoriteLocations3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -328,6 +348,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811240057128_AddNameToUserProfile.resx">
       <DependentUpon>201811240057128_AddNameToUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241740252_added userfavoritelocation table.resx">
+      <DependentUpon>201811241740252_added userfavoritelocation table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241741510_UserFavoriteLocations.resx">
+      <DependentUpon>201811241741510_UserFavoriteLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241743435_UserFavoriteLocations1.resx">
+      <DependentUpon>201811241743435_UserFavoriteLocations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241744047_UserFavoriteLocations2.resx">
+      <DependentUpon>201811241744047_UserFavoriteLocations2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241750459_UserFavoriteLocations3.resx">
+      <DependentUpon>201811241750459_UserFavoriteLocations3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

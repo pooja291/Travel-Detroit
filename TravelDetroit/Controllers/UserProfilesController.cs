@@ -1,15 +1,19 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
+﻿using System.Net.Http;
 using System.Web.Mvc;
+using TravelDetroit.Models;
 
 namespace TravelDetroit.Controllers
 {
     public class UserProfilesController : Controller
     {
+
+        private ApplicationDbContext _context;
+
+        public UserProfilesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: UserProfiles
         public ActionResult Index()
         {
@@ -33,9 +37,14 @@ namespace TravelDetroit.Controllers
                     "&fields=formatted_address,geometry,icon,id,name,permanently_closed,photo,place_id,type" +
                     "&key=AIzaSyDZh7Jb0tW0K4CJ5bO9ozvaFAFxabdT-T4" +
                     "&locationbias=circle:20000@42.3330,-83.0465");
-                var result = JsonConvert.DeserializeObject(response);
                 return Content(response);
+
             }
+        }
+
+        [HttpPost]
+        public void SaveLocationToUser()
+        {
         }
     }
 }
