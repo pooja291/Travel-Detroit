@@ -203,6 +203,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\201811241750459_UserFavoriteLocations3.cs" />
     <Compile Include="Migrations\201811241750459_UserFavoriteLocations3.Designer.cs">
       <DependentUpon>201811241750459_UserFavoriteLocations3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811251553371_TagsAddedToLocationModel.cs" />
+    <Compile Include="Migrations\201811251553371_TagsAddedToLocationModel.Designer.cs">
+      <DependentUpon>201811251553371_TagsAddedToLocationModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -319,6 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Locations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -363,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811241750459_UserFavoriteLocations3.resx">
       <DependentUpon>201811241750459_UserFavoriteLocations3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811251553371_TagsAddedToLocationModel.resx">
+      <DependentUpon>201811251553371_TagsAddedToLocationModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
