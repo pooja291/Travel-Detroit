@@ -1,0 +1,32 @@
+﻿@using System.Web.Mvc.Html
+
+@model TravelDetroit.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Search Users";
+}
+
+<h2>Search Users</h2>
+
+<div>
+    <form action="/Manage/Index" method="post">
+        <input type="text" id="searchText" name="searchText" placeholder="Search Users" />
+        <input type="submit" id="searchUsers" value="Search" />
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Search Results</th>
+    </tr>
+
+    @foreach (var user in Model.SearchUsersResults)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(user.Name, "Index", "UserProfiles", new { id = Model.UserProfile.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

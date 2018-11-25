@@ -208,45 +208,38 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811232330074_InitialCreate.cs" />
-    <Compile Include="Migrations\201811232330074_InitialCreate.Designer.cs">
-      <DependentUpon>201811232330074_InitialCreate.cs</DependentUpon>
+    <Compile Include="HelperMethods.cs" />
+    <Compile Include="Migrations\201811250346099_InitialCreate.cs" />
+    <Compile Include="Migrations\201811250346099_InitialCreate.Designer.cs">
+      <DependentUpon>201811250346099_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811240044519_AddLocationsDbSet.cs" />
-    <Compile Include="Migrations\201811240044519_AddLocationsDbSet.Designer.cs">
-      <DependentUpon>201811240044519_AddLocationsDbSet.cs</DependentUpon>
+    <Compile Include="Migrations\201811250351022_AddUserIdToManageIndex.cs" />
+    <Compile Include="Migrations\201811250351022_AddUserIdToManageIndex.Designer.cs">
+      <DependentUpon>201811250351022_AddUserIdToManageIndex.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811240048260_AddUserProfileDbSet.cs" />
-    <Compile Include="Migrations\201811240048260_AddUserProfileDbSet.Designer.cs">
-      <DependentUpon>201811240048260_AddUserProfileDbSet.cs</DependentUpon>
+    <Compile Include="Migrations\201811250402212_AddNameToManageIndexViewModel.cs" />
+    <Compile Include="Migrations\201811250402212_AddNameToManageIndexViewModel.Designer.cs">
+      <DependentUpon>201811250402212_AddNameToManageIndexViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811240053105_AddFavoriteLocationsToUserProfile.cs" />
-    <Compile Include="Migrations\201811240053105_AddFavoriteLocationsToUserProfile.Designer.cs">
-      <DependentUpon>201811240053105_AddFavoriteLocationsToUserProfile.cs</DependentUpon>
+    <Compile Include="Migrations\201811250410561_AddNameToRegisterViewModel.cs" />
+    <Compile Include="Migrations\201811250410561_AddNameToRegisterViewModel.Designer.cs">
+      <DependentUpon>201811250410561_AddNameToRegisterViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811240057128_AddNameToUserProfile.cs" />
-    <Compile Include="Migrations\201811240057128_AddNameToUserProfile.Designer.cs">
-      <DependentUpon>201811240057128_AddNameToUserProfile.cs</DependentUpon>
+    <Compile Include="Migrations\201811250426367_AddSearchUsersViewModel.cs" />
+    <Compile Include="Migrations\201811250426367_AddSearchUsersViewModel.Designer.cs">
+      <DependentUpon>201811250426367_AddSearchUsersViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811241740252_added userfavoritelocation table.cs" />
-    <Compile Include="Migrations\201811241740252_added userfavoritelocation table.Designer.cs">
-      <DependentUpon>201811241740252_added userfavoritelocation table.cs</DependentUpon>
+    <Compile Include="Migrations\201811251925571_renameUserRef.cs" />
+    <Compile Include="Migrations\201811251925571_renameUserRef.Designer.cs">
+      <DependentUpon>201811251925571_renameUserRef.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811241741510_UserFavoriteLocations.cs" />
-    <Compile Include="Migrations\201811241741510_UserFavoriteLocations.Designer.cs">
-      <DependentUpon>201811241741510_UserFavoriteLocations.cs</DependentUpon>
+    <Compile Include="Migrations\201811252036510_adduserNameText.cs" />
+    <Compile Include="Migrations\201811252036510_adduserNameText.Designer.cs">
+      <DependentUpon>201811252036510_adduserNameText.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811241743435_UserFavoriteLocations1.cs" />
-    <Compile Include="Migrations\201811241743435_UserFavoriteLocations1.Designer.cs">
-      <DependentUpon>201811241743435_UserFavoriteLocations1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811241744047_UserFavoriteLocations2.cs" />
-    <Compile Include="Migrations\201811241744047_UserFavoriteLocations2.Designer.cs">
-      <DependentUpon>201811241744047_UserFavoriteLocations2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811241750459_UserFavoriteLocations3.cs" />
-    <Compile Include="Migrations\201811241750459_UserFavoriteLocations3.Designer.cs">
-      <DependentUpon>201811241750459_UserFavoriteLocations3.cs</DependentUpon>
+    <Compile Include="Migrations\201811252042240_DeletedUserNameText.cs" />
+    <Compile Include="Migrations\201811252042240_DeletedUserNameText.Designer.cs">
+      <DependentUpon>201811252042240_DeletedUserNameText.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -316,6 +309,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UserProfiles\AddLocationToUser.cshtml" />
+    <Content Include="Views\Manage\_SearchUsersPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UserProfiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,35 +330,29 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811232330074_InitialCreate.resx">
-      <DependentUpon>201811232330074_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811250346099_InitialCreate.resx">
+      <DependentUpon>201811250346099_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811240044519_AddLocationsDbSet.resx">
-      <DependentUpon>201811240044519_AddLocationsDbSet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811250351022_AddUserIdToManageIndex.resx">
+      <DependentUpon>201811250351022_AddUserIdToManageIndex.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811240048260_AddUserProfileDbSet.resx">
-      <DependentUpon>201811240048260_AddUserProfileDbSet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811250402212_AddNameToManageIndexViewModel.resx">
+      <DependentUpon>201811250402212_AddNameToManageIndexViewModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811240053105_AddFavoriteLocationsToUserProfile.resx">
-      <DependentUpon>201811240053105_AddFavoriteLocationsToUserProfile.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811250410561_AddNameToRegisterViewModel.resx">
+      <DependentUpon>201811250410561_AddNameToRegisterViewModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811240057128_AddNameToUserProfile.resx">
-      <DependentUpon>201811240057128_AddNameToUserProfile.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811250426367_AddSearchUsersViewModel.resx">
+      <DependentUpon>201811250426367_AddSearchUsersViewModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811241740252_added userfavoritelocation table.resx">
-      <DependentUpon>201811241740252_added userfavoritelocation table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811251925571_renameUserRef.resx">
+      <DependentUpon>201811251925571_renameUserRef.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811241741510_UserFavoriteLocations.resx">
-      <DependentUpon>201811241741510_UserFavoriteLocations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811252036510_adduserNameText.resx">
+      <DependentUpon>201811252036510_adduserNameText.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811241743435_UserFavoriteLocations1.resx">
-      <DependentUpon>201811241743435_UserFavoriteLocations1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811241744047_UserFavoriteLocations2.resx">
-      <DependentUpon>201811241744047_UserFavoriteLocations2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811241750459_UserFavoriteLocations3.resx">
-      <DependentUpon>201811241750459_UserFavoriteLocations3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811252042240_DeletedUserNameText.resx">
+      <DependentUpon>201811252042240_DeletedUserNameText.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

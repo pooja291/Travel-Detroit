@@ -7,12 +7,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TravelDetroit.Models;
+using TravelDetroit.HelperMethods;
 
 namespace TravelDetroit.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext _context = new ApplicationDbContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -52,7 +55,9 @@ namespace TravelDetroit.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        // POST: /Manage/Index
+        [AcceptVerbs(HttpVerbs.Get|HttpVerbs.Post)]
+        public async Task<ActionResult> Index(ManageMessageId? message, string searchText)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
@@ -70,7 +75,9 @@ namespace TravelDetroit.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                UserProfile = HelperMethods.HelperMethods.GetUserProfileByName(User.Identity.Name),
+                SearchUsersResults = _context.UserProfiles.Where(u => u.Name.Contains(searchText)).ToList()
             };
             return View(model);
         }

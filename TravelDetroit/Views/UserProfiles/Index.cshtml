@@ -1,0 +1,24 @@
+﻿@model TravelDetroit.Models.UserProfile
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.Name</h2>
+
+<h4>Favorite Locations</h4>
+
+<table class="table">
+    <tr>
+        <th>@Model.Name's Favorite Locations</th>
+    </tr>
+
+    @foreach (var location in Model.Locations)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => location)
+            </td>
+        </tr>
+    }
+</table>
