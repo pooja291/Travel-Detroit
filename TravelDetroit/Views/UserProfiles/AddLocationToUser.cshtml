@@ -5,14 +5,14 @@
 }
 
 
-@using (@Html.BeginForm("SaveLocationToUser", "UserProfiles"))
+@using (@Html.BeginForm("", ""))
 {
     <h2>Add Your Favorite Location</h2>
 
     <div>
         Please provide the location name:<br>
         <input type="text" id="locationName" name="locationName">
-        <input id="searchLocation" type="button" value="Search Location" onclick="GetLocation(); return false;" />
+        <input id="searchLocation" type="button" value="Search Location" onclick="SearchLocation(); return false;" />
     </div>
     <br />
     <div>
@@ -22,18 +22,20 @@
         <br />
         Address: <label id="lblAddress"></label>
         <br />
-        Tags: <label id="lbltags"></label>
+        Tags: <label id="lblTags"></label>
+        <br />
+        Place Id: <label id="lblPlaceId"></label>
     </div>
     <br />
-    <button type="Submit" class="btn btn-primary">Save</button>
+    <input id="saveLocation" type="button" value="Save Location" onclick="SaveLocation(); alert('Location is Added'); return false;" />
 }
 
 @section scripts
 {
     <script>
-        function GetLocation() {
+        function SearchLocation() {
             $.ajax({
-                url: '/userprofiles/PlaceSearch',
+                url: '/locations/SearchLocation',
                 type: 'GET',
                 data: {
                     'searchText': $("#locationName").val()
@@ -42,11 +44,26 @@
                 success: function (data) {
                     $('#lblName').text(data.candidates[0].name);
                     $('#lblAddress').text(data.candidates[0].formatted_address);
-                    $('#lbltags').text(data.candidates[0].types);
+                    $('#lblTags').text(data.candidates[0].types);
+                    $('#lblPlaceId').text(data.candidates[0].place_id);
                 },
                 error: function (request, error) {
                     alert("Error in Request: " + JSON.stringify(request));
                 }
+            });
+        }
+
+        function SaveLocation() {
+            $.ajax({
+                url: '/locations/SaveLocation',
+                type: 'POST',
+                data: {
+                    Name: $('#lblName').text(),
+                    Address: $('#lblAddress').text(),
+                    PlaceId: $('#lblPlaceId').text(),
+                    Tags: $('#lblTags').text()
+                },
+                dataType: 'json',
             });
         }
     </script>

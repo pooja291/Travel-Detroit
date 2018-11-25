@@ -11,6 +11,7 @@ namespace TravelDetroit.Models
         [Required]
         public string PlaceId { get; set; }
         public string Address { get; set; }
+        public string Tags { get; set; }
         public ICollection<UserProfile> UserProfiles { get; set; }
     }
 }
