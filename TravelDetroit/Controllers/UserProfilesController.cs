@@ -1,22 +1,25 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Mvc;
 using TravelDetroit.Models;
+using System.Linq;
 
 namespace TravelDetroit.Controllers
 {
     public class UserProfilesController : Controller
     {
 
-        private ApplicationDbContext _context;
+        private ApplicationDbContext _context = new ApplicationDbContext();
 
         public UserProfilesController()
         {
-            _context = new ApplicationDbContext();
         }
 
         // GET: UserProfiles
         public ActionResult Index()
         {
-            return View();
+            var user = new UserProfile();
+            return View(user);
         }
 
         public ActionResult AddLocationToUser(int id)
