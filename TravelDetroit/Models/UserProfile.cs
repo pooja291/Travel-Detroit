@@ -6,8 +6,12 @@ namespace TravelDetroit.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-        public ApplicationUser User { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         public ICollection<Location> Locations { get; set; }
+    }
+
+    public class SearchUsersViewModel
+    {
+        public List<UserProfile> Users { get; set; }
     }
 }

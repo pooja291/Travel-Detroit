@@ -15,6 +15,8 @@ namespace TravelDetroit.Controllers
 
     public class AccountController : Controller
     {
+        private ApplicationDbContext _context = new ApplicationDbContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -155,6 +157,11 @@ namespace TravelDetroit.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    _context.Users.Attach(user);
+                    _context.UserProfiles.Add(new UserProfile { ApplicationUser = user, Name = model.Name });
+                    _context.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
