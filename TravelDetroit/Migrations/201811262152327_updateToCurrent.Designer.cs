@@ -7,13 +7,13 @@ namespace TravelDetroit.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class TagsAddedToLocationModel : IMigrationMetadata
+    public sealed partial class updateToCurrent : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TagsAddedToLocationModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updateToCurrent));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811251553371_TagsAddedToLocationModel"; }
+            get { return "201811262152327_updateToCurrent"; }
         }
         
         string IMigrationMetadata.Source
