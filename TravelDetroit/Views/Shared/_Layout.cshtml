@@ -26,10 +26,10 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>*@
-                <div>
+                <div class="nav navbar-nav navbar-search">
                     <form action="/Locations/SearchLocation" method="get">
                         <input type="text" id="searchText" name="searchText" placeholder="Search Locations" />
-                        <input type="submit" id="searchLocations" value="Search" />
+                        <input class="btn btn-primary" type="submit" id="searchLocations" value="Search" />
                     </form>
                 </div>
                 @Html.Partial("_LoginPartial")
@@ -40,7 +40,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Team Mauve</p>
         </footer>
     </div>
 
