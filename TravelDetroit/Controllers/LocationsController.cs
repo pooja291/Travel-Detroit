@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Web.Mvc;
 using TravelDetroit.Models;
 
@@ -31,11 +32,28 @@ namespace TravelDetroit.Controllers
         }
 
         [HttpPost]
-        public EmptyResult SaveLocation(Location location)
+        public ContentResult SaveLocation(Location location)
         {
             var context = new ApplicationDbContext();
             context.Locations.Add(location);
             context.SaveChanges();
+            return Content(location.Id.ToString());
+        }
+
+        [HttpPost]
+        public EmptyResult SaveLocationToUser(int userId, int locationId)
+        {
+            var context = new ApplicationDbContext();
+            var user = context.UserProfiles.Find(userId);
+            var location = context.Locations.Find(locationId);
+            if(user.Locations == null)
+            {
+                user.Locations = new List<Location>();
+            }
+            user.Locations.Add(location);
+
+            context.SaveChanges();
+
             return new EmptyResult();
         }
     }
