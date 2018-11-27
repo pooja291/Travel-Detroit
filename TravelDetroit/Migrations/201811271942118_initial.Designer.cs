@@ -13,7 +13,7 @@ namespace TravelDetroit.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201811270457555_initial"; }
+            get { return "201811271942118_initial"; }
         }
         
         string IMigrationMetadata.Source
