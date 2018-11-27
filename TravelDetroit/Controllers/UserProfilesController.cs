@@ -22,9 +22,9 @@ namespace TravelDetroit.Controllers
             return View(user);
         }
 
-        public ActionResult AddLocationToUser(int id)
+        public ActionResult AddLocationToUser(UserProfile userProfile)
         {
-            return View("AddLocationToUser", id);
+            return View("AddLocationToUser", userProfile);
         }
     }
 }

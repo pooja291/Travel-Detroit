@@ -32,5 +32,14 @@
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
         </dd>
+        <dd>
+            @Html.ActionLink("Add New Location", "AddLocationToUser", "UserProfiles",
+           new {
+               id = Model.UserProfile.Id,
+               Locations = Model.UserProfile.Locations,
+               Name = Model.UserProfile.Name,
+               ApplicationUser = Model.UserProfile.ApplicationUser
+           }, null)
+        </dd>
     </dl>
 </div>

@@ -1,9 +1,8 @@
-﻿
+﻿@model TravelDetroit.Models.UserProfile
 @{
     ViewBag.Title = "AddLocationToUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 @using (@Html.BeginForm("", ""))
 {
@@ -27,7 +26,7 @@
         Place Id: <label id="lblPlaceId"></label>
     </div>
     <br />
-    <input id="saveLocation" type="button" value="Save Location" onclick="SaveLocation(); alert('Location is Added'); return false;" />
+    <input id="saveLocation" type="button" value="Save Location" onclick="SaveLocation(); return false;" />
 }
 
 @section scripts
@@ -64,7 +63,31 @@
                     Tags: $('#lblTags').text()
                 },
                 dataType: 'json',
+                success: function (data) {
+                    $.ajax({
+                        url: '/locations/SaveLocationToUser',
+                        type: 'POST',
+                        data: {
+                            userId: @Model.Id,
+                            locationId: data,
+                        },
+                        dataType: 'json'
+                    });
+                    alert('Location is added to the user');
+                    ClearLocationInformation();
+                },
+                error: function (request, error) {
+                    alert("Error in Request: " + JSON.stringify(request));
+                }
             });
+        }
+
+        function ClearLocationInformation() {
+            $('#lblName').text('');
+            $('#lblAddress').text('');
+            $('#lblTags').text('');
+            $('#lblPlaceId').text('');
+            $("#locationName").val('');
         }
     </script>
 }
