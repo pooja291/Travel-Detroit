@@ -210,41 +210,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HelperMethods.cs" />
-    <Compile Include="Migrations\201811250346099_InitialCreate.cs" />
-    <Compile Include="Migrations\201811250346099_InitialCreate.Designer.cs">
-      <DependentUpon>201811250346099_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811250351022_AddUserIdToManageIndex.cs" />
-    <Compile Include="Migrations\201811250351022_AddUserIdToManageIndex.Designer.cs">
-      <DependentUpon>201811250351022_AddUserIdToManageIndex.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811250402212_AddNameToManageIndexViewModel.cs" />
-    <Compile Include="Migrations\201811250402212_AddNameToManageIndexViewModel.Designer.cs">
-      <DependentUpon>201811250402212_AddNameToManageIndexViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811250410561_AddNameToRegisterViewModel.cs" />
-    <Compile Include="Migrations\201811250410561_AddNameToRegisterViewModel.Designer.cs">
-      <DependentUpon>201811250410561_AddNameToRegisterViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811250426367_AddSearchUsersViewModel.cs" />
-    <Compile Include="Migrations\201811250426367_AddSearchUsersViewModel.Designer.cs">
-      <DependentUpon>201811250426367_AddSearchUsersViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811251925571_renameUserRef.cs" />
-    <Compile Include="Migrations\201811251925571_renameUserRef.Designer.cs">
-      <DependentUpon>201811251925571_renameUserRef.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811252036510_adduserNameText.cs" />
-    <Compile Include="Migrations\201811252036510_adduserNameText.Designer.cs">
-      <DependentUpon>201811252036510_adduserNameText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811252042240_DeletedUserNameText.cs" />
-    <Compile Include="Migrations\201811252042240_DeletedUserNameText.Designer.cs">
-      <DependentUpon>201811252042240_DeletedUserNameText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811251553371_TagsAddedToLocationModel.cs" />
-    <Compile Include="Migrations\201811251553371_TagsAddedToLocationModel.Designer.cs">
-      <DependentUpon>201811251553371_TagsAddedToLocationModel.cs</DependentUpon>
+    <Compile Include="Migrations\201811262152327_updateToCurrent.cs" />
+    <Compile Include="Migrations\201811262152327_updateToCurrent.Designer.cs">
+      <DependentUpon>201811262152327_updateToCurrent.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -336,32 +304,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811250346099_InitialCreate.resx">
-      <DependentUpon>201811250346099_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811250351022_AddUserIdToManageIndex.resx">
-      <DependentUpon>201811250351022_AddUserIdToManageIndex.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811250402212_AddNameToManageIndexViewModel.resx">
-      <DependentUpon>201811250402212_AddNameToManageIndexViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811250410561_AddNameToRegisterViewModel.resx">
-      <DependentUpon>201811250410561_AddNameToRegisterViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811250426367_AddSearchUsersViewModel.resx">
-      <DependentUpon>201811250426367_AddSearchUsersViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811251925571_renameUserRef.resx">
-      <DependentUpon>201811251925571_renameUserRef.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811252036510_adduserNameText.resx">
-      <DependentUpon>201811252036510_adduserNameText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811252042240_DeletedUserNameText.resx">
-      <DependentUpon>201811252042240_DeletedUserNameText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811251553371_TagsAddedToLocationModel.resx">
-      <DependentUpon>201811251553371_TagsAddedToLocationModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811262152327_updateToCurrent.resx">
+      <DependentUpon>201811262152327_updateToCurrent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

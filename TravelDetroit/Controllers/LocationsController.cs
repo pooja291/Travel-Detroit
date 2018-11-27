@@ -12,6 +12,8 @@ namespace TravelDetroit.Controllers
             return View();
         }
 
+
+        // GET: Locations/SearchLocation
         [HttpGet()]
         public async System.Threading.Tasks.Task<ContentResult> SearchLocation(string searchText)
         {
