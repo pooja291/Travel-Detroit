@@ -12,13 +12,25 @@
     <tr>
         <th>@Model.Name's Favorite Locations</th>
     </tr>
-
-    @foreach (var location in Model.Locations)
+    @if (Model.Locations != null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => location)
-            </td>
-        </tr>
+        foreach (var location in Model.Locations)
+        {
+            <tr>
+                <td>
+                    <text>Name: </text>@location.Name
+                    <br />
+                    <text>Address: </text>@location.Address
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+            <tr>
+                <td>
+                    <text>No locations found...</text>
+                </td>
+            </tr>
     }
 </table>
