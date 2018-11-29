@@ -16,10 +16,10 @@ namespace TravelDetroit.Controllers
         }
 
         // GET: UserProfiles
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var user = new UserProfile();
-            return View(user);
+            var data = _context.UserProfiles.Include("Locations").FirstOrDefault(x => x.Id == id);
+            return View(data);
         }
 
         public ActionResult AddLocationToUser(UserProfile userProfile)

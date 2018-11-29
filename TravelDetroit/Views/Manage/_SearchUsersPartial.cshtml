@@ -24,7 +24,7 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(user.Name, "Index", "UserProfiles", new { id = Model.UserProfile.Id }, null)
+                @Html.ActionLink(user.Name, "Index", "UserProfiles", new { id = user.Id }, null)
             </td>
         </tr>
     }
