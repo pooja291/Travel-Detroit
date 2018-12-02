@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TravelDetroit.Models
+namespace TravelDetroit.Data.Models
 {
     public class Location
     {

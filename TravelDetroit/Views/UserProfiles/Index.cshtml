@@ -1,16 +1,18 @@
-﻿@model TravelDetroit.Models.UserProfile
+﻿@model TravelDetroit.Presentation.ViewModels.UserProfileIndexViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
+@Html.Partial("_SearchUsersPartial", Model)
+
 <h2>@Model.Name</h2>
 
-<h4>Favorite Locations</h4>
+@Html.Partial("_AddLocationToUserPartial", Model)
 
 <table class="table">
     <tr>
-        <th>@Model.Name's Favorite Locations</th>
+        <th>Your Favorite Locations</th>
     </tr>
     @if (Model.Locations != null)
     {
@@ -27,10 +29,10 @@
     }
     else
     {
-            <tr>
-                <td>
-                    <text>No locations found...</text>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <text>No locations found...</text>
+            </td>
+        </tr>
     }
 </table>

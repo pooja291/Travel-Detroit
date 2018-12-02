@@ -6,8 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TravelDetroit.Models;
-using TravelDetroit.HelperMethods;
+using TravelDetroit.Data.DAL;
+using TravelDetroit.Presentation.ViewModels;
 
 namespace TravelDetroit.Controllers
 {
@@ -69,15 +69,14 @@ namespace TravelDetroit.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var model = new IndexViewModel
+            var model = new ManageIndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                UserProfile = HelperMethods.HelperMethods.GetUserProfileByName(User.Identity.Name),
-                SearchUsersResults = _context.UserProfiles.Where(u => u.Name.Contains(searchText)).ToList()
+                UserProfile = new UserProfileRepository().Read(userId),
             };
             return View(model);
         }
