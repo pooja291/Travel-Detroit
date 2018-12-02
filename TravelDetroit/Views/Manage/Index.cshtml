@@ -1,11 +1,9 @@
-﻿@using TravelDetroit.Models
+﻿@using TravelDetroit.Presentation.ViewModels
 @using System.Web.Mvc.Html
-@model IndexViewModel
+@model ManageIndexViewModel
 @{
     ViewBag.Title = "Manage";
 }
-
-@Html.Partial("_SearchUsersPartial", Model)
 
 <h2>@Model.UserProfile.Name</h2>
 

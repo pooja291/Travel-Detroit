@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using TravelDetroit.Models;
+using TravelDetroit.Data.DAL;
 
 namespace TravelDetroit
 {

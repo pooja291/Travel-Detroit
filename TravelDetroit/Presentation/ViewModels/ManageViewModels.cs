@@ -2,10 +2,11 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using TravelDetroit.Data.Models;
 
-namespace TravelDetroit.Models
+namespace TravelDetroit.Presentation.ViewModels
 {
-    public class IndexViewModel
+    public class ManageIndexViewModel
     {
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
@@ -13,7 +14,6 @@ namespace TravelDetroit.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
         public UserProfile UserProfile { get; set; }
-        public List<UserProfile> SearchUsersResults { get; set; }
     }
 
     public class ManageLoginsViewModel

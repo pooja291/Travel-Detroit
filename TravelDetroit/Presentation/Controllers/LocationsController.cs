@@ -1,12 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Mvc;
-using TravelDetroit.Models;
+using TravelDetroit.Data.DAL;
+using TravelDetroit.Service.Methods;
+using TravelDetroit.Service.Models;
+using TravelDetroit.Presentation.ViewModels;
 
 namespace TravelDetroit.Controllers
 {
     public class LocationsController : Controller
     {
+
+        private LocationService _locationService = new LocationService();
+        private UserProfileService _userProfileService = new UserProfileService();
+
         // GET: Locations
         public ActionResult Index()
         {
@@ -34,26 +41,15 @@ namespace TravelDetroit.Controllers
         [HttpPost]
         public ContentResult SaveLocation(Location location)
         {
-            var context = new ApplicationDbContext();
-            context.Locations.Add(location);
-            context.SaveChanges();
+            _locationService.SaveLocation(location);
             return Content(location.Id.ToString());
         }
 
         [HttpPost]
-        public EmptyResult SaveLocationToUser(int userId, int locationId)
+        public EmptyResult SaveLocationToUser(string locationPlaceId)
         {
-            var context = new ApplicationDbContext();
-            var user = context.UserProfiles.Find(userId);
-            var location = context.Locations.Find(locationId);
-            if(user.Locations == null)
-            {
-                user.Locations = new List<Location>();
-            }
-            user.Locations.Add(location);
-
-            context.SaveChanges();
-
+            var currentUser = _userProfileService.GetCurrentUserProfile();
+            _locationService.SaveLocationToUser(currentUser.Id, locationPlaceId);
             return new EmptyResult();
         }
     }

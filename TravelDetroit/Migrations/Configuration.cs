@@ -6,16 +6,17 @@ namespace TravelDetroit.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using TravelDetroit.Models;
+    using TravelDetroit.Data.DAL;
+    using TravelDetroit.Data.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TravelDetroit.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TravelDetroit.Data.DAL.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TravelDetroit.Models.ApplicationDbContext context)
+        protected override void Seed(TravelDetroit.Data.DAL.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
