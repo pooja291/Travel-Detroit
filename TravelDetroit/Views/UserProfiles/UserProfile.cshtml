@@ -1,0 +1,27 @@
+﻿@model TravelDetroit.Presentation.ViewModels.UserProfileUserViewModel
+
+@{
+    ViewBag.Title = "User";
+}
+
+<h2>@Model.UserProfile.Name</h2>
+
+@if (Model.UserProfile.Locations.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>@Model.UserProfile.Name's Favorite Locations</th>
+        </tr>
+        @foreach (var location in Model.UserProfile.Locations)
+        {
+            <tr>
+                <td>
+                    <text>Name: </text>@location.Name
+                    <br />
+                    <text>Address: </text>@location.Address
+                </td>
+            </tr>
+        }
+    </table>
+}
+
