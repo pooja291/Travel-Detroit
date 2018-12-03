@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TravelDetroit.Data.DAL;
 
-namespace TravelDetroit.Models
+namespace TravelDetroit.Data.Models
 {
     public class UserProfile
     {
