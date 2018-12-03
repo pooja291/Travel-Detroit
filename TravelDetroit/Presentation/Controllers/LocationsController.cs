@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Mvc;
-using TravelDetroit.Data.DAL;
 using TravelDetroit.Service.Methods;
 using TravelDetroit.Service.Models;
-using TravelDetroit.Presentation.ViewModels;
 
 namespace TravelDetroit.Controllers
 {
@@ -19,7 +16,6 @@ namespace TravelDetroit.Controllers
         {
             return View();
         }
-
 
         // GET: Locations/SearchLocation
         [HttpGet()]
@@ -38,6 +34,22 @@ namespace TravelDetroit.Controllers
             }
         }
 
+        // GET: Locations/SearchLocations
+        [HttpGet()]
+        public async System.Threading.Tasks.Task<ContentResult> SearchLocations(string searchText)
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetStringAsync(
+                    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+                    "location=42.3330,-83.0465" +
+                    "&radius=2000" +
+                    "&keyword="+ searchText +
+                    "&key=AIzaSyDZh7Jb0tW0K4CJ5bO9ozvaFAFxabdT-T4");
+                return Content(response);
+            }
+        }
+
         [HttpPost]
         public ContentResult SaveLocation(Location location)
         {
@@ -46,10 +58,10 @@ namespace TravelDetroit.Controllers
         }
 
         [HttpPost]
-        public EmptyResult SaveLocationToUser(string locationPlaceId)
+        public EmptyResult SaveLocationToUser(int locationId)
         {
             var currentUser = _userProfileService.GetCurrentUserProfile();
-            _locationService.SaveLocationToUser(currentUser.Id, locationPlaceId);
+            _locationService.SaveLocationToUser(currentUser.Id, locationId);
             return new EmptyResult();
         }
     }
