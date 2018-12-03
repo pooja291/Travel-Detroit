@@ -13,11 +13,12 @@ namespace TravelDetroit.Service.Methods
         {
             var saveLocation = AutoMapper.Mapper.Map<Data.Models.Location>(location);
             new LocationRepository().SaveLocation(saveLocation);
+            location.Id = saveLocation.Id;
         }
 
-        public void SaveLocationToUser(int userId, string locationPlaceId)
+        public void SaveLocationToUser(int userId, int locationId)
         {
-            new LocationRepository().SaveLocationToUser(userId, locationPlaceId);
+            new LocationRepository().SaveLocationToUser(userId, locationId);
         }
     }
 }

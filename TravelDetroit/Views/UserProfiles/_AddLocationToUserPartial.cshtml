@@ -11,20 +11,28 @@
     <div>
         Please provide the location name:<br>
         <input type="text" id="locationName" name="locationName">
-        <input id="searchLocation" type="button" value="Search Location" onclick="SearchLocation(); return false;" />
+        <input id="searchLocation" type="button" value="Search Location" onclick="SearchLocations(); return false;" />
     </div>
     <br />
-    <div>
-        Here are the search results-
-        <br />
-        Name of the Place: <label id="lblName"></label>
-        <br />
-        Address: <label id="lblAddress"></label>
-        <br />
-        Tags: <label id="lblTags"></label>
-        <br />
-        Place Id: <label id="lblPlaceId"></label>
-    </div>
+    @*<div>
+            Here are the search results-
+            <br />
+            Name of the Place: <label id="lblName"></label>
+            <br />
+            Address: <label id="lblAddress"></label>
+            <br />
+            Tags: <label id="lblTags"></label>
+            <br />
+            Place Id: <label id="lblPlaceId"></label>
+        </div>*@
+    <table id="tblSearchedLocations" class="table">
+        <tr>
+            <td>Select</td>
+            <td>Name</td>
+            <td>Address</td>
+            <td>Tags</td>
+        </tr>
+    </table>
     <br />
     <input id="saveLocation" type="button" value="Save Location" onclick="SaveLocation(); return false;" />
 }
@@ -52,33 +60,78 @@
             });
         }
 
-        function SaveLocation() {
+        var locationsData;
+
+        function SearchLocations() {
             $.ajax({
-                url: '/locations/SaveLocation',
-                type: 'POST',
+                url: '/locations/SearchLocations',
+                type: 'GET',
                 data: {
-                    Name: $('#lblName').text(),
-                    Address: $('#lblAddress').text(),
-                    PlaceId: $('#lblPlaceId').text(),
-                    Tags: $('#lblTags').text()
+                    'searchText': $("#locationName").val()
                 },
                 dataType: 'json',
-                success: function () {
-                    $.ajax({
-                        url: '/locations/SaveLocationToUser',
-                        type: 'POST',
-                        data: {
-                            locationPlaceId: $('#lblPlaceId').text(),
-                        },
-                        dataType: 'json'
-                    });
-                    alert('Location is added to the user');
-                    ClearLocationInformation();
+                success: function (data) {
+                    ClearLocationSearchTable();
+                    locationsData = data;
+
+                    var table = document.getElementById("tblSearchedLocations");
+                    for (i = 0; i < data.results.length; i++) {
+                        var row = table.insertRow(i + 1);
+                        var column1 = row.insertCell(0);
+                        var column2 = row.insertCell(1);
+                        var column3 = row.insertCell(2);
+                        var column4 = row.insertCell(3);
+                        column1.innerHTML = '<input type="radio" name="location" value=' + data.results[i].place_id + '>';
+                        column2.innerHTML = data.results[i].name;
+                        column3.innerHTML = data.results[i].vicinity;
+                        column4.innerHTML = data.results[i].types;
+                    }
                 },
                 error: function (request, error) {
                     alert("Error in Request: " + JSON.stringify(request));
                 }
             });
+        }
+
+        function SaveLocation() {
+            var chx = document.getElementsByTagName('input');
+            for (var i = 0; i < chx.length; i++) {
+                if (chx[i].type == 'radio' && chx[i].checked && chx[i].name == 'location') {
+                    var selectedPlaceId = chx[i].value;
+                    for (i = 0; i < locationsData.results.length; i++) {
+                        if (locationsData.results[i].place_id == selectedPlaceId) {
+                            $.ajax({
+                                url: '/locations/SaveLocation',
+                                type: 'POST',
+                                data: {
+                                    Name: locationsData.results[i].name,
+                                    Address: locationsData.results[i].vicinity,
+                                    PlaceId: locationsData.results[i].place_id,
+                                    Tags: locationsData.results[i].types
+                                },
+                                dataType: 'json',
+                                success: function (id) {
+                                    $.ajax({
+                                        url: '/locations/SaveLocationToUser',
+                                        type: 'POST',
+                                        data: {
+                                            locationId: id
+                                        },
+                                        dataType: 'json'
+                                    });
+                                    alert('Location is added to the user');
+                                    ClearLocationSearchTable();
+                                },
+                                error: function (request, error) {
+                                    alert("Error in Request: " + JSON.stringify(request));
+                                }
+                            });
+                            return;
+                        }
+                    }
+                }
+            }
+            alert("please select a location");
         }
 
         function ClearLocationInformation() {
@@ -88,6 +141,16 @@
             $('#lblPlaceId').text('');
             $("#locationName").val('');
         }
+
+        function ClearLocationSearchTable() {
+            var tableHeaderRowCount = 1;
+            var table = document.getElementById('tblSearchedLocations');
+            var rowCount = table.rows.length;
+            for (var i = tableHeaderRowCount; i < rowCount; i++) {
+                table.deleteRow(tableHeaderRowCount);
+            }
+        }
+
     </script>
 }
 
