@@ -209,6 +209,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Data\DAL\LocationRepository.cs" />
     <Compile Include="Data\DAL\UserProfileRepository.cs" />
+    <Compile Include="Migrations\201812032114027_Create New.cs" />
+    <Compile Include="Migrations\201812032114027_Create New.Designer.cs">
+      <DependentUpon>201812032114027_Create New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presentation\Controllers\AccountController.cs" />
     <Compile Include="Presentation\Controllers\HomeController.cs" />
     <Compile Include="Presentation\Controllers\LocationsController.cs" />
@@ -217,11 +222,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811271942118_initial.cs" />
-    <Compile Include="Migrations\201811271942118_initial.Designer.cs">
-      <DependentUpon>201811271942118_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presentation\ViewModels\AccountViewModels.cs" />
     <Compile Include="Data\DAL\IdentityModels.cs" />
     <Compile Include="Data\Models\Location.cs" />
@@ -322,8 +322,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811271942118_initial.resx">
-      <DependentUpon>201811271942118_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812032114027_Create New.resx">
+      <DependentUpon>201812032114027_Create New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
