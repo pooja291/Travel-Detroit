@@ -40,7 +40,9 @@ namespace TravelDetroit.Data.DAL
         public UserProfile GetCurrentUserProfile()
         {
             var currentApplicationUserId = HttpContext.Current.User.Identity.GetUserId();
-            return _context.UserProfiles.Single(u => u.ApplicationUser.Id == currentApplicationUserId);
+            if (currentApplicationUserId != null)
+                return _context.UserProfiles.Include("Locations").Single(u => u.ApplicationUser.Id == currentApplicationUserId);
+            return new UserProfile();
         }
 
         public void Update(int id, string name, ICollection<Location> locations)
