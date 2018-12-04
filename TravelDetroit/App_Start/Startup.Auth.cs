@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using TravelDetroit.Models;
 
+//namespace TravelDetroit
 namespace TravelDetroit
 {
     public partial class Startup
