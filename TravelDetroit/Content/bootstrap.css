@@ -20,9 +20,13 @@ html {
 
 body {
     margin: 0;
+}
+.index-bg {
     background-image: url("detroit.jpg");
 }
-
+#jumbo {
+    background-color:lightcyan;
+}
 article,
 aside,
 details,
