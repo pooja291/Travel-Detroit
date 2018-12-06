@@ -10,12 +10,15 @@ namespace TravelDetroit.Data.DAL
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
 
-        public void SaveLocation(Location location)
+        public void SaveLocation(Location location)    //,UserReview userreview)
         {
             if (_context.Locations.Where(l => l.PlaceId == location.PlaceId).Count() == 0)
             {
                 _context.Locations.Add(location);
                 _context.SaveChanges();
+                //Swapna Added below 2 lines and Method argument for Reviews
+              //  _context.UserReviews.Add(userreview);
+                //_context.SaveChanges();
             }
         }
 

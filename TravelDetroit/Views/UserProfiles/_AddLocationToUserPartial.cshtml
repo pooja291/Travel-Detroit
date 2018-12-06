@@ -15,15 +15,15 @@
     </div>
     <br />
     @*<div>
-            Here are the search results-
-            <br />
-            Name of the Place: <label id="lblName"></label>
-            <br />
-            Address: <label id="lblAddress"></label>
-            <br />
-            Tags: <label id="lblTags"></label>
-            <br />
-            Place Id: <label id="lblPlaceId"></label>
+                    Here are the search results-
+                    <br />
+                    Name of the Place: <label id="lblName"></label>
+                    <br />
+                    Address: <label id="lblAddress"></label>
+                    <br />
+                    Tags: <label id="lblTags"></label>
+                    <br />
+                    Place Id: <label id="lblPlaceId"></label>
         </div>*@
     <table id="tblSearchedLocations" class="table">
         <tr>
@@ -34,7 +34,9 @@
         </tr>
     </table>
     <br />
-    <input id="saveLocation" type="button" value="Save Location" onclick="SaveLocation(); return false;" />
+    // <input id="saveLocation" type="button" value="Save Location" onclick="SaveLocation(); return false;" />
+    <input id="saveLocationWithoutReview" type="button" value="Save Location Without Review" onclick="SaveLocation();return false;" />
+    <input id="saveLocationWithReview" type="button" value="Save Location With Review" onclick="SaveLocation(); RedirectToAddReview(); return false;" />
 }
 
 @section scripts
@@ -95,11 +97,12 @@
 
         function SaveLocation() {
             var chx = document.getElementsByTagName('input');
+
             for (var i = 0; i < chx.length; i++) {
                 if (chx[i].type == 'radio' && chx[i].checked && chx[i].name == 'location') {
                     var selectedPlaceId = chx[i].value;
                     for (i = 0; i < locationsData.results.length; i++) {
-                        if (locationsData.results[i].place_id == selectedPlaceId) {
+                        if (locationsData.[i].place_id == selectedPlaceId) {
                             $.ajax({
                                 url: '/locations/SaveLocation',
                                 type: 'POST',
@@ -107,7 +110,7 @@
                                     Name: locationsData.results[i].name,
                                     Address: locationsData.results[i].vicinity,
                                     PlaceId: locationsData.results[i].place_id,
-                                    Tags: locationsData.results[i].types
+                                    Tags: locationsData.results[i].types,
                                 },
                                 dataType: 'json',
                                 success: function (id) {
@@ -150,6 +153,13 @@
                 table.deleteRow(tableHeaderRowCount);
             }
         }
+
+        function RedirectToAddReview() {
+
+           window.location.href = "/Locations/Index";
+           
+        }
+      //  window.location.href = "/{controller}/{action}/{params}"; //use params to pass the data
 
     </script>
 }

@@ -60,8 +60,8 @@
                     Name: $('#lblName').text(),
                     Address: $('#lblAddress').text(),
                     PlaceId: $('#lblPlaceId').text(),
-                    Tags: $('#lblTags').text()
-                },
+                    Tags: $('#lblTags').text(),
+                   },
                 dataType: 'json',
                 success: function (data) {
                     $.ajax({
@@ -87,6 +87,7 @@
             $('#lblTags').text('');
             $('#lblPlaceId').text('');
             $("#locationName").val('');
+           
         }
     </script>
 }

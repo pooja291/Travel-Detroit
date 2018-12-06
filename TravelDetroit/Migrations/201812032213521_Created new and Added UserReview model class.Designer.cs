@@ -7,13 +7,13 @@ namespace TravelDetroit.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateNew : IMigrationMetadata
+    public sealed partial class CreatednewandAddedUserReviewmodelclass : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateNew));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreatednewandAddedUserReviewmodelclass));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812032114027_Create New"; }
+            get { return "201812032213521_Created new and Added UserReview model class"; }
         }
         
         string IMigrationMetadata.Source

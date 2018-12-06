@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using TravelDetroit.Service.Methods;
 using TravelDetroit.Service.Models;
 
+using TravelDetroit.Data.DAL;
+
 namespace TravelDetroit.Controllers
 {
     public class LocationsController : Controller
@@ -11,7 +13,7 @@ namespace TravelDetroit.Controllers
         private LocationService _locationService = new LocationService();
         private UserProfileService _userProfileService = new UserProfileService();
 
-        // GET: Locations
+        // GET: Locations/
         public ActionResult Index()
         {
             return View();
@@ -64,5 +66,17 @@ namespace TravelDetroit.Controllers
             _locationService.SaveLocationToUser(currentUser.Id, locationId);
             return new EmptyResult();
         }
+
+        //[HttpGet]
+        //public EmptyResult Index(int locationId)
+        //{
+
+        //    var saveLocation = AutoMapper.Mapper.Map<Data.Models.Location>(locationId);
+        //    new LocationRepository().SaveLocation(saveLocation);
+        //    location.Id = saveLocation.Id;
+        //    return new EmptyResult();
+        //}
+
+
     }
 }

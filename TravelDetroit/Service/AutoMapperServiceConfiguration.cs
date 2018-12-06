@@ -13,6 +13,7 @@ namespace TravelDetroit.Service
             {
                 cfg.CreateMap<Data.Models.UserProfile, Service.Models.UserProfile>();
                 cfg.CreateMap<Data.Models.Location, Service.Models.Location>();
+                cfg.CreateMap<Data.Models.UserReview, Service.Models.UserReview>();
             });
         }
     }

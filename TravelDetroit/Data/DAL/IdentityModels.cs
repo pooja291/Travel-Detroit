@@ -35,5 +35,6 @@ namespace TravelDetroit.Data.DAL
 
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<UserReview> UserReviews { get; set; }
     }
 }
