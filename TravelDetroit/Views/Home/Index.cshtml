@@ -1,29 +1,36 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>Travel Detroit</h1>
-    <p class="lead">Add your favorite locations and search for those of your friends!</p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>@Html.ActionLink("Sign Up", "Register", "Account")</h2>
-        <p>
-            Sign up to start adding locations!
-        </p>
+<body class="index-bg">
+    <div class="jumbotron" id="jumbo">
+        <h1>Travel Detroit</h1>
+        <p class="lead"> Location based Social Network!</p>
     </div>
-    <div class="col-md-4">
-        <h2>@Html.ActionLink("Sign In", "Login", "Account")</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>
+                @Html.ActionLink("Sign Up", "Register", "Account",null,
+                        new { @class = "btn btn-primary btn-lg" })
+            </h2>
+            <p>
+                Sign up to start adding locations!
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>
+                @Html.ActionLink("Sign In", "Login", "Account",null,
+                     new { @class = "btn btn-primary btn-lg" })
+        </h2>
         <p>
             Sign in to add locations and search for your friends!
         </p>
     </div>
-    <div class="col-md-4">
-        <h2>@Html.ActionLink("Search Locations", "Search", "Locations")</h2>
-        <p>
-            Search for locations and see reviews from other people who have visited them!
-        </p>
-    </div>
+    @*<div class="col-md-4">
+            <h2>@Html.ActionLink("Search Locations", "Search", "Locations")</h2>
+            <p>
+                Search for locations and see reviews from other people who have visited them!
+            </p>
+        </div>*@
 </div>
+</body>
