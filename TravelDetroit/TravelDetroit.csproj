@@ -209,6 +209,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Data\DAL\LocationRepository.cs" />
     <Compile Include="Data\DAL\UserProfileRepository.cs" />
+    <Compile Include="Migrations\201812070234424_RemoveUserReviews.cs" />
+    <Compile Include="Migrations\201812070234424_RemoveUserReviews.Designer.cs">
+      <DependentUpon>201812070234424_RemoveUserReviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Controllers\AccountController.cs" />
     <Compile Include="Presentation\Controllers\HomeController.cs" />
     <Compile Include="Presentation\Controllers\LocationsController.cs" />
@@ -326,6 +330,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811271942118_initial.resx">
       <DependentUpon>201811271942118_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812070234424_RemoveUserReviews.resx">
+      <DependentUpon>201812070234424_RemoveUserReviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

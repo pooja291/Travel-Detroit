@@ -15,7 +15,7 @@
     </form>
 </div>
 
-@if (Model.SearchUsersResults != null)
+@if (Model.SearchUsersResults != null && Model.SearchUsersResults.Count() > 0)
 {
     <table class="table">
         <tr>
