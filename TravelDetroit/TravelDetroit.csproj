@@ -82,6 +82,9 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -146,9 +149,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -229,6 +229,7 @@
     <Compile Include="Presentation\ViewModels\AccountViewModels.cs" />
     <Compile Include="Data\DAL\IdentityModels.cs" />
     <Compile Include="Data\Models\Location.cs" />
+    <Compile Include="Presentation\ViewModels\LocationViewModels.cs" />
     <Compile Include="Presentation\ViewModels\ManageViewModels.cs" />
     <Compile Include="Data\Models\UserProfile.cs" />
     <Compile Include="Presentation\ViewModels\AutoMapperPresentationConfiguration.cs" />
@@ -236,10 +237,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AutoMapperServiceConfiguration.cs" />
     <Compile Include="Service\Methods\AccountService.cs" />
+    <Compile Include="Service\Methods\DtoMapper.cs" />
+    <Compile Include="Service\Methods\GooglePlacesAPI.cs" />
     <Compile Include="Service\Methods\LocationService.cs" />
     <Compile Include="Service\Methods\UserProfileService.cs" />
     <Compile Include="Service\Models\ApplicationUser.cs" />
+    <Compile Include="Service\Models\GooglePlacesLocationDTO.cs" />
     <Compile Include="Service\Models\Location.cs" />
+    <Compile Include="Service\Models\PlacesResultsDto.cs" />
     <Compile Include="Service\Models\UserProfile.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -309,10 +314,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\UserProfiles\_AddLocationToUserPartial.cshtml" />
     <Content Include="Views\UserProfiles\UserProfile.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Locations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

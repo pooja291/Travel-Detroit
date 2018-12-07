@@ -1,7 +1,10 @@
-﻿using System.Net.Http;
+﻿using System.Net;
+using System.Net.Http;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using TravelDetroit.Service.Methods;
 using TravelDetroit.Service.Models;
+using TravelDetroit.Presentation.ViewModels;
 
 namespace TravelDetroit.Controllers
 {
@@ -11,16 +14,28 @@ namespace TravelDetroit.Controllers
         private LocationService _locationService = new LocationService();
         private UserProfileService _userProfileService = new UserProfileService();
 
-        // GET: Locations
-        public ActionResult Index()
+        // GET: Location/Index/
+
+        public ActionResult Index(string placeId)
         {
-            return View();
+            var model = new LocationsIndexViewModel();
+            Location location = new LocationService().FindByPlaceId(placeId);
+            if (location == null)
+            {
+                model.Location = GetLocationFromApi(placeId);
+            }
+            else
+            {
+                model.Location = location;
+            }
+            return View(model);
         }
 
         // GET: Locations/SearchLocation
         [HttpGet()]
         public async System.Threading.Tasks.Task<ContentResult> SearchLocation(string searchText)
         {
+
             using (var client = new HttpClient())
             {
                 var response = await client.GetStringAsync(
@@ -36,17 +51,20 @@ namespace TravelDetroit.Controllers
 
         // GET: Locations/SearchLocations
         [HttpGet()]
-        public async System.Threading.Tasks.Task<ContentResult> SearchLocations(string searchText)
+        public ActionResult SearchLocations(string searchText)
         {
-            using (var client = new HttpClient())
+            var result = new GooglePlacesAPI().SearchLocations(searchText);
+            return Content(result);
+        }
+
+        [HttpGet()]
+        public Location GetLocationFromApi(string placeId)
+        {
+            using (WebClient wc = new WebClient())
             {
-                var response = await client.GetStringAsync(
-                    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-                    "location=42.3330,-83.0465" +
-                    "&radius=2000" +
-                    "&keyword="+ searchText +
-                    "&key=AIzaSyDZh7Jb0tW0K4CJ5bO9ozvaFAFxabdT-T4");
-                return Content(response);
+                var json = new GooglePlacesAPI().GetLocationDetails(placeId);
+                var locationToMap = JsonConvert.DeserializeObject<GooglePlacesLocationDTO>(json);
+                return new DtoMapper().Map(locationToMap);
             }
         }
 

@@ -6,9 +6,8 @@ using TravelDetroit.Service.Models;
 
 namespace TravelDetroit.Presentation.ViewModels
 {
-    public class LocationIndexViewModel
+    public class LocationsIndexViewModel
     {
         public Location Location { get; set; }
-        public List<UserReview> UserReviews { get; set; }
     }
 }

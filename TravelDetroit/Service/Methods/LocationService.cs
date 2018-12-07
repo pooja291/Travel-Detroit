@@ -20,5 +20,10 @@ namespace TravelDetroit.Service.Methods
         {
             new LocationRepository().SaveLocationToUser(userId, locationId);
         }
+
+        public Location FindByPlaceId(string placeId)
+        {
+            return AutoMapper.Mapper.Map<Location>(new LocationRepository().FindByPlaceId(placeId));
+        }
     }
 }

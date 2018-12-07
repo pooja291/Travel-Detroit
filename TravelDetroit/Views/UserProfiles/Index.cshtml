@@ -22,7 +22,7 @@
         @foreach (var location in Model.Locations)
         {
             <tr>
-                <td>@location.Name</td>
+                <td><a href="/locations/index/@location.Id">@location.Name</a></td>
                 <td>@location.Address</td>
             </tr>
         }

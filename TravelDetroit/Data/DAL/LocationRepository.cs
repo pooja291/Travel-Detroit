@@ -38,5 +38,10 @@ namespace TravelDetroit.Data.DAL
         {
             return _context.Locations.SingleOrDefault(l => l.Id == id);
         }
+
+        public Location FindByPlaceId(string placeId)
+        {
+            return _context.Locations.SingleOrDefault(l => l.PlaceId == placeId);
+        }
     }
 }
