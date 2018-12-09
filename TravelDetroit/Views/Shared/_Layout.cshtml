@@ -27,9 +27,9 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>*@
                 <div class="nav navbar-nav navbar-search">
-                    <form action="/Locations/SearchLocation" method="get">
+                    <form action="/Locations/SearchLocationsUnregistered" method="get">
                         <input type="text" id="searchText" name="searchText" placeholder="Search Locations" />
-                        <input class="btn btn-primary" type="submit" id="searchLocations" value="Search" />
+                        <input class="btn btn-primary" type="submit" id="searchLocationsUnregistered" value="Search" />
                     </form>
                 </div>
                 @Html.Partial("_LoginPartial")

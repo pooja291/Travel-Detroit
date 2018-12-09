@@ -315,6 +315,7 @@
     <Content Include="Views\UserProfiles\_AddLocationToUserPartial.cshtml" />
     <Content Include="Views\UserProfiles\UserProfile.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Locations\SearchLocationsUnregistered.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,7 +19,7 @@ namespace TravelDetroit.Controllers
         public ActionResult Index(string placeId)
         {
             var model = new LocationsIndexViewModel();
-            Location location = new LocationService().FindByPlaceId(placeId);
+            Location location = _locationService.FindByPlaceId(placeId);
             if (location == null)
             {
                 model.Location = GetLocationFromApi(placeId);
@@ -27,6 +27,14 @@ namespace TravelDetroit.Controllers
             else
             {
                 model.Location = location;
+            }
+            if (_userProfileService.GetCurrentUserProfile().Name == null)
+            {
+                model.IsLoggedIn = false;
+            }
+            else
+            {
+                model.IsLoggedIn = true;
             }
             return View(model);
         }
@@ -68,19 +76,30 @@ namespace TravelDetroit.Controllers
             }
         }
 
-        [HttpPost]
-        public ContentResult SaveLocation(Location location)
+        [HttpGet()]
+        public ActionResult SearchLocationsUnregistered(string searchText)
         {
-            _locationService.SaveLocation(location);
-            return Content(location.Id.ToString());
+            var model = new LocationsSearchResultsViewModel()
+            {
+                SearchText = searchText
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public EmptyResult SaveLocationToUser(int locationId)
+        public ActionResult SaveLocation(Location location)
         {
-            var currentUser = _userProfileService.GetCurrentUserProfile();
-            _locationService.SaveLocationToUser(currentUser.Id, locationId);
-            return new EmptyResult();
+            var userProfile = _userProfileService.GetCurrentUserProfile();
+            _locationService.SaveLocation(location, userProfile);
+            return RedirectToAction("Index", "UserProfiles");
         }
+
+        //[HttpPost]
+        //public EmptyResult SaveLocationToUser(int locationId)
+        //{
+        //    var currentUser = _userProfileService.GetCurrentUserProfile();
+        //    _locationService.SaveLocationToUser(currentUser.Id, locationId);
+        //    return new EmptyResult();
+        //}
     }
 }

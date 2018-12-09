@@ -1,0 +1,49 @@
+﻿@model TravelDetroit.Presentation.ViewModels.LocationsSearchResultsViewModel
+@{
+    ViewBag.Title = "SearchLocationsUnregistered";
+}
+
+<h2>Search Results</h2>
+
+<table id="tblSearchedLocations" class="table">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Tags</th>
+    </tr>
+</table>
+<br />
+
+<script>
+    var locationsData;
+    function SearchLocations() {
+        $.ajax({
+            url: '/locations/SearchLocations',
+            type: 'GET',
+            data: {
+                'searchText': "@Model.SearchText",
+            },
+            dataType: 'json',
+            success: function (data) {
+                locationsData = data;
+                var table = document.getElementById("tblSearchedLocations");
+                for (i = 0; i < data.results.length; i++) {
+                    var row = table.insertRow(i + 1);
+                    var column1 = row.insertCell(0);
+                    var column2 = row.insertCell(1);
+                    var column3 = row.insertCell(2);
+                    column1.innerHTML = '<a href="/locations/index?placeId=' + data.results[i].place_id + '">' + data.results[i].name + '</a>';
+                    column2.innerHTML = data.results[i].vicinity;
+                    column3.innerHTML = data.results[i].types;
+                }
+            },
+            error: function (request, error) {
+                alert("Error in Request: " + JSON.stringify(request));
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        SearchLocations();
+    }, false);
+</script>

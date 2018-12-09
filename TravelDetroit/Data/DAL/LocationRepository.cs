@@ -19,10 +19,10 @@ namespace TravelDetroit.Data.DAL
             }
         }
 
-        public void SaveLocationToUser(int userId, int locationId)
+        public void SaveLocationToUser(int userId, string locationPlaceId)
         {
             var user = _context.UserProfiles.Find(userId);
-            var location = _context.Locations.FirstOrDefault(l => l.Id == locationId);
+            var location = _context.Locations.FirstOrDefault(l => l.PlaceId == locationPlaceId);
             if (user.Locations == null)
             {
                 user.Locations = new List<Location>();

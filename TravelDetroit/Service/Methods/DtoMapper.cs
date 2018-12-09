@@ -10,12 +10,19 @@ namespace TravelDetroit.Service.Methods
     {
         public Location Map(GooglePlacesLocationDTO dto)
         {
+            string tags = "";
+            foreach (string item in dto.result.types)
+            {
+                tags += item + ", ";
+            }
+
             return new Location()
             {
                 Name = dto.result.name,
                 Address = dto.result.formatted_address,
                 PlaceId = dto.result.place_id,
-                Tags = dto.result.types.ToString()
+                Tags = tags.Substring(0, tags.Count() - 2),
+                UserProfiles = new List<UserProfile>()
             };
         }
     }

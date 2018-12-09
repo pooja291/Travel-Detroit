@@ -8,6 +8,13 @@ namespace TravelDetroit.Presentation.ViewModels
 {
     public class LocationsIndexViewModel
     {
+        public bool IsLoggedIn { get; set; }
         public Location Location { get; set; }
+    }
+
+    public class LocationsSearchResultsViewModel
+    {
+        public string SearchText { get; set; }
+        public List<Location> SearchLocationResults { get; set; }
     }
 }
