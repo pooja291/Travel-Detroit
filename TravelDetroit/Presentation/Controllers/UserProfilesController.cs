@@ -32,9 +32,10 @@ namespace TravelDetroit.Controllers
 
         public ActionResult UserProfile(int userId)
         {
+            var userProfile = _userProfileService.GetUserProfile(userId);
             var model = new UserProfileUserViewModel()
             {
-                UserProfile = _userProfileService.GetUserProfile(userId)
+                UserProfile = userProfile
             };
             return View(model);
         }

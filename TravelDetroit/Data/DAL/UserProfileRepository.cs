@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +25,7 @@ namespace TravelDetroit.Data.DAL
 
         public UserProfile Read(int id)
         {
-            return _context.UserProfiles.SingleOrDefault(u => u.Id == id);
+            return _context.UserProfiles.Include(x => x.Locations).Single(u => u.Id == id);
         }
 
         public UserProfile Read(string id)

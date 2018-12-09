@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using TravelDetroit.Data.Models;
 
 namespace TravelDetroit.Data.DAL
@@ -41,7 +42,7 @@ namespace TravelDetroit.Data.DAL
 
         public Location FindByPlaceId(string placeId)
         {
-            return _context.Locations.SingleOrDefault(l => l.PlaceId == placeId);
+            return _context.Locations.Include(l => l.UserProfiles).SingleOrDefault(l => l.PlaceId == placeId);
         }
     }
 }

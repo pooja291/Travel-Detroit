@@ -16,12 +16,11 @@
         {
             <tr>
                 <td>
-                    <text>Name: </text>@location.Name
+                    @Html.ActionLink(location.Name, "Index", "Locations", new { PlaceId = location.PlaceId }, null)
                     <br />
-                    <text>Address: </text>@location.Address
+                    @location.Address
                 </td>
             </tr>
         }
     </table>
 }
-

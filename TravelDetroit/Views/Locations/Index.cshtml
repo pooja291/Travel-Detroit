@@ -22,10 +22,19 @@
 
 @if (Model.Location.UserProfiles.Count() > 0)
 {
-    <ul>
-    @foreach (var user in Model.Location.UserProfiles)
-    {
-        <li>@Html.ActionLink(user.Name, "UserProfile", "UserProfiles", new { userId = user.Id }, null)</li>
-    }
-    </ul>
+    <table class="table">
+        <tr>
+            <th>@Model.Location.Name has been favorited by:</th>
+        </tr>
+
+        @foreach (var user in Model.Location.UserProfiles)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(user.Name, "UserProfile", "UserProfiles", new { userId = user.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
 }
