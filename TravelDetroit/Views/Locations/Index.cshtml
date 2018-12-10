@@ -1,0 +1,40 @@
+﻿@model TravelDetroit.Presentation.ViewModels.LocationsIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.Location.Name</h2>
+
+<p>@Model.Location.Address</p>
+<p>@Model.Location.Tags</p>
+
+<form action="/locations/saveLocation" method="post">
+    <input name="Name" type="hidden" value="@Model.Location.Name" />
+    <input name="Address" type="hidden" value="@Model.Location.Address" />
+    <input name="Tags" type="hidden" value="@Model.Location.Tags" />
+    <input name="PlaceId" type="hidden" value="@Model.Location.PlaceId" />
+    @if (Model.IsLoggedIn == true)
+    {
+        <input type="submit" id="saveLocationButton" name="saveLocationToUser" value="Add to your favorite locations" />
+    }
+</form>
+
+@if (Model.Location.UserProfiles.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>@Model.Location.Name has been favorited by:</th>
+        </tr>
+
+        @foreach (var user in Model.Location.UserProfiles)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(user.Name, "UserProfile", "UserProfiles", new { userId = user.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+}

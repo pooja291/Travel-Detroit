@@ -29,5 +29,15 @@ namespace TravelDetroit.Controllers
             };
             return View(model);
         }
+
+        public ActionResult UserProfile(int userId)
+        {
+            var userProfile = _userProfileService.GetUserProfile(userId);
+            var model = new UserProfileUserViewModel()
+            {
+                UserProfile = userProfile
+            };
+            return View(model);
+        }
     }
 }

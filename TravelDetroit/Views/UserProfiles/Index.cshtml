@@ -10,29 +10,21 @@
 
 @Html.Partial("_AddLocationToUserPartial", Model)
 
-<table class="table">
-    <tr>
-        <th>Your Favorite Locations</th>
-    </tr>
-    @if (Model.Locations != null)
-    {
-        foreach (var location in Model.Locations)
+
+@if (Model.Locations != null && Model.Locations.Count() > 0)
+{
+    <h3>Your Favorite Locations</h3>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        @foreach (var location in Model.Locations)
         {
             <tr>
-                <td>
-                    <text>Name: </text>@location.Name
-                    <br />
-                    <text>Address: </text>@location.Address
-                </td>
+                <td><a href="/locations/index?placeId=@location.PlaceId">@location.Name</a></td>
+                <td>@location.Address</td>
             </tr>
         }
-    }
-    else
-    {
-        <tr>
-            <td>
-                <text>No locations found...</text>
-            </td>
-        </tr>
-    }
-</table>
+        </table>
+}

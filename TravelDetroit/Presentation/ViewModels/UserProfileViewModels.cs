@@ -16,4 +16,9 @@ namespace TravelDetroit.Presentation.ViewModels
         public List<UserProfile> SearchUsersResults { get; set; }
         public List<Location> SearchLocationResults { get; set; }
     }
+
+    public class UserProfileUserViewModel
+    {
+        public UserProfile UserProfile { get; set; }
+    }
 }

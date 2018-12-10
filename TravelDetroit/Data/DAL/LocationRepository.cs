@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using TravelDetroit.Data.Models;
 
 namespace TravelDetroit.Data.DAL
@@ -19,10 +20,10 @@ namespace TravelDetroit.Data.DAL
             }
         }
 
-        public void SaveLocationToUser(int userId, int locationId)
+        public void SaveLocationToUser(int userId, string locationPlaceId)
         {
             var user = _context.UserProfiles.Find(userId);
-            var location = _context.Locations.FirstOrDefault(l => l.Id == locationId);
+            var location = _context.Locations.FirstOrDefault(l => l.PlaceId == locationPlaceId);
             if (user.Locations == null)
             {
                 user.Locations = new List<Location>();
@@ -37,6 +38,11 @@ namespace TravelDetroit.Data.DAL
         public Location Read(int id)
         {
             return _context.Locations.SingleOrDefault(l => l.Id == id);
+        }
+
+        public Location FindByPlaceId(string placeId)
+        {
+            return _context.Locations.Include(l => l.UserProfiles).SingleOrDefault(l => l.PlaceId == placeId);
         }
     }
 }

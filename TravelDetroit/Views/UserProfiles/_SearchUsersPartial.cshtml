@@ -15,7 +15,7 @@
     </form>
 </div>
 
-@if (Model.SearchUsersResults != null)
+@if (Model.SearchUsersResults != null && Model.SearchUsersResults.Count() > 0)
 {
     <table class="table">
         <tr>
@@ -26,7 +26,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(user.Name, "Index", "UserProfiles", new { id = user.Id }, null)
+                    @Html.ActionLink(user.Name, "UserProfile", "UserProfiles", new { userId = user.Id }, null)
                 </td>
             </tr>
         }
